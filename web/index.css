@@ -1,0 +1,89 @@
+@font-face {
+  font-family: 'JockeyOne';
+  src: url('assets/JockeyOne-Regular.otf') format('opentype');
+}
+
+/* Background for body */
+body {
+  background-color: #eee;
+}
+
+/*
+*****************
+Navbar
+*****************
+ */
+
+/* Add shadow to navigation component */
+.navbar.has-shadow {
+  box-shadow: 0 2px 0 0 #00d1b2;
+}
+
+/* Set logo size */
+.navbar-item img.site-logo {
+  width: 43px;
+}
+.navbar-item span.site-logo-text {
+  font-family: JockeyOne, serif;
+  font-size: 24px;
+}
+
+/*
+*****************
+Tabs
+*****************
+ */
+
+/* Background color to tabs */
+.tabs {
+  background-color: white;
+}
+
+/*
+ Make sure tabs stack on top of each other on smaller screens
+ https://github.com/jgthms/bulma/issues/1344#issuecomment-519478907
+*/
+.tabs ul {
+  flex-shrink: 1;
+  flex-wrap: wrap;
+  border-bottom-color: transparent;
+}
+
+/* Fixed width for three tabs on tablet plus */
+.tabs ul li {
+  width: 33.33%;
+}
+
+/*
+ On screens below tablet 768px, make items full width and fix borders
+ https://github.com/jgthms/bulma/issues/1344#issuecomment-583452885
+ */
+@media screen and (max-width: 767px) {
+  .tabs ul li {
+    width: 100%;
+  }
+
+  .tabs ul li:not(:last-child) a {
+    border-bottom-color: transparent;
+  }
+
+  .tabs ul li:first-child a {
+    border-radius: 4px 4px 0 0;
+  }
+
+  .tabs ul li:last-child a {
+    border-radius: 0 0 4px 4px;
+  }
+}
+
+/*
+********************
+ Utility classes 
+******************
+*/
+
+/* Center child elements vertically */
+.is-vertical-center {
+  display: flex;
+  align-items: center;
+}
