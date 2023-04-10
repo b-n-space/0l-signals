@@ -35,6 +35,8 @@ docker run -p 8000:8000 --rm 0l-signals
 ```
 ## Resources
 
+- [Onchain voting proposal](https://gist.github.com/nourspace/3d855975574762c932627716d31c8ef5)
+- [Example proposal](https://gist.github.com/nourspace/2e9cb94211a7a1676ab1293fadfe3b22)
 - https://www.chartjs.org/
 - https://vuejs.org/
 - https://bulma.io/
