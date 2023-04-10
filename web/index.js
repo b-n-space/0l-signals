@@ -21,12 +21,12 @@ createApp({
   computed: {},
   methods: {},
   async mounted () {
-    const { data } = await axios.get('/proposals/')
+    const { data } = await axios.get('/api/proposals/')
     this.proposals = data.map(
       p => ({
         title: p.title,
         subtitle: p.description,
-        link: `/proposal/${p.proposal_id}`,
+        link: `/proposal/${p.id}`,
         tags: p.votes_summary.options.map(o => `${o.option}: ${o.weight}`),
       }))
   },

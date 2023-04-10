@@ -22,7 +22,7 @@ createApp({
   computed: {},
   methods: {},
   async mounted () {
-    const { data } = await axios.get('/proposals/1')
+    const { data } = await axios.get('/api/proposals/1')
     this.title = data.title
     this.subtitle = data.description
 

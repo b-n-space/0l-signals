@@ -2,79 +2,36 @@ from typing import List
 
 from fastapi import FastAPI
 from fastapi.responses import FileResponse
-from pydantic import BaseModel
 from fastapi.staticfiles import StaticFiles
+
+from proposals import Proposal, get_proposal_info
 
 app = FastAPI()
 
-
-class ChartData(BaseModel):
-    labels: List[str]
-    data: List[float]
-
-
-class VoteOption(BaseModel):
-    option: str
-    count: int
-    weight: int
-
-
-class VotesSummary(BaseModel):
-    total_votes: int
-    total_weight: int
-    options: List[VoteOption]
-
-
-class Proposal(BaseModel):
-    proposal_id: int
-    title: str
-    description: str
-    votes: ChartData
-    votes_summary: VotesSummary
+# Mount the static files middleware to serve files from the /web directory
+app.mount("/web", StaticFiles(directory="web"), name="web")
 
 
 @app.get("/")
-async def serve_root():
+async def proposals():
     return FileResponse("web/index.html")
 
 
 @app.get("/proposal/{proposal_id}")
 async def proposal(proposal_id: int):
+    # Todo (Nour): Pass id to the page so it fetches the correct proposal
     return FileResponse("web/proposal.html")
 
 
-@app.get("/proposals/{proposal_id}", response_model=Proposal)
+# Todo (Nour): Cache response
+@app.get("/api/proposals/{proposal_id}", response_model=Proposal)
 async def get_proposal(proposal_id: int):
-    # In a real-world scenario, you would fetch the proposal data from a database
-    # based on the proposal_id.
-    return get_proposal_from_rpc(proposal_id)
+    return get_proposal_info(proposal_id)
 
 
-@app.get("/proposals", response_model=List[Proposal])
+# Todo (Nour): Cache response
+@app.get("/api/proposals", response_model=List[Proposal])
 async def get_proposals():
-    # In a real-world scenario, you would fetch the list of proposals from a database.
-    proposals = [get_proposal_from_rpc(1), get_proposal_from_rpc(2)]
+    # Todo (Nour): Fetch proposals from a fixed location; repo, config file, etc
+    proposals = [get_proposal_info(1), get_proposal_info(2)]
     return proposals
-
-
-# Mount the static files middleware to serve files from the /web directory
-app.mount("/web", StaticFiles(directory="web"), name="web")
-
-def get_proposal_from_rpc(proposal_id):
-    return Proposal(
-        proposal_id=proposal_id,
-        title="Example Proposal",
-        description="This is an example proposal.",
-        votes=ChartData(
-            labels=["Wallet 1", "Wallet 2", "Wallet 3", "Wallet 4", "Wallet 5", "Wallet 6"],
-            data=[250, 250, 250, 250, 100, 1],
-        ),
-        votes_summary=VotesSummary(
-            total_votes=6,
-            total_weight=1101,
-            options=[
-                VoteOption(option="Yes", count=4, weight=601),
-                VoteOption(option="No", count=2, weight=500),
-            ],
-        ),
-    )
