@@ -15,30 +15,35 @@ createApp({
   },
   data () {
     return {
-      title: 'proposal',
-      subtitle: 'prop desc',
+      loading: true,
+      title: 'Proposal',
+      description: 'Loading...',
+      options: [],
     }
   },
   computed: {},
   methods: {},
   async mounted () {
-    const { data } = await axios.get('/api/proposals/1')
+    const proposalID = location.pathname.split("/proposal/")[1]
+    const { data } = await axios.get(`/api/proposals/${proposalID}`)
     this.title = data.title
-    this.subtitle = data.description
+    this.description = data.description
+    this.options = data.options
+    this.loading = false
 
     new Chart(document.getElementById('myChart'), {
       type: 'bar',
       data: {
-        labels: data.votes_summary.options.map(o => o.option),
+        labels: data.options.map(o => o.option),
         datasets: [
           {
             label: '# of Votes',
-            data: data.votes_summary.options.map(o => o.count),
+            data: data.options.map(o => o.count),
             borderWidth: 1,
           },
           {
             label: 'Weight',
-            data: data.votes_summary.options.map(o => o.weight),
+            data: data.options.map(o => o.weight),
             borderWidth: 1,
           },
         ],

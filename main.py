@@ -4,7 +4,7 @@ from fastapi import FastAPI
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 
-from proposals import Proposal, get_proposal_info
+from proposals import Proposal, get_proposal_info, fill_proposal_stats, get_all_proposals
 
 app = FastAPI()
 
@@ -23,15 +23,13 @@ async def proposal(proposal_id: int):
     return FileResponse("web/proposal.html")
 
 
-# Todo (Nour): Cache response
 @app.get("/api/proposals/{proposal_id}", response_model=Proposal)
 async def get_proposal(proposal_id: int):
-    return get_proposal_info(proposal_id)
+    proposal = get_proposal_info(proposal_id)
+    fill_proposal_stats(proposal)
+    return proposal
 
 
-# Todo (Nour): Cache response
 @app.get("/api/proposals", response_model=List[Proposal])
 async def get_proposals():
-    # Todo (Nour): Fetch proposals from a fixed location; repo, config file, etc
-    proposals = [get_proposal_info(1), get_proposal_info(2)]
-    return proposals
+    return get_all_proposals()

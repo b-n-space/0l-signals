@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "title": "Example Proposal one",
+    "address": "145EF368FC67DB6B85EB1C7D07F0D21F",
+    "description": "This is an example proposal. 1",
+    "options": [
+      {
+        "option": "Yes",
+        "address": "A4DEEA733CF29026358692F2AD9A8313"
+      },
+      {
+        "option": "No",
+        "address": "84AEAF60A1DA840614CEA855086E2CC8"
+      }
+    ]
+  }
+]

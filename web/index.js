@@ -21,7 +21,7 @@ createApp({
         title: p.title,
         subtitle: p.description,
         link: `/proposal/${p.id}`,
-        tags: p.votes_summary.options.map(o => `${o.option}: ${o.weight}`),
+        tags: p.options.map(o => `${o.option}: ${o.weight}`),
       }))
   },
 }).mount('#app')

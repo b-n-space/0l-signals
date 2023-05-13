@@ -6,19 +6,19 @@ Available at https://signals.openlibra.space
 
 ## Todos
 
-- [ ] Fetch proposals from a GitRepository. This is used in `get_proposals`
+- [x] Fetch proposals from a GitRepository. This is used in `get_proposals`
 
   Say `https://github.com/0LNetworkCommunity/libra/tree/main/ol/documentation/proposals` or wherever we decide to host
-  proposals
+  proposals. Currently, JSON file in this repo
 
-- [ ] Fetch proposal stats from RPC and calculate counts and weights for its options.
+- [x] Fetch proposal stats from RPC and calculate counts and weights for its options.
 
   I believe this has to be a full archive or from the explorer
 
 - [ ] Improve proposal page; display description, options, and addresses.
   Make the addresses clickable to copy; both address and ol command
 
-- [ ] Utilise cache when calculating proposal stats
+- [x] Utilise cache when calculating proposal stats
 
 - [x] Deploy somewhere
 

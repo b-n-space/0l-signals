@@ -12,7 +12,7 @@
 <body>
 <div id="app">
   <bn-nav></bn-nav>
-  <bn-hero :title="title" :subtitle="subtitle"></bn-hero>
+  <bn-hero :title="title" :subtitle="description"></bn-hero>
 
   <!-- Content section -->
   <div id="content" class="section">
@@ -21,23 +21,16 @@
         <div class="column is-6">
           <canvas id="myChart"></canvas>
         </div>
-        <!-- Todo (Nour): Fill from API -->
         <div class="column is-6">
           <h3 class="is-size-3">Description</h3>
-          Some longer description Some longer description Some longer description Some longer description Some longer
-          description
+          {{ description }}
 
-          <h3 class="is-size-3">Options</h3>
+          <h3 v-if="options.length" class="is-size-3">Options</h3>
           <ul>
-            <li>
-              <p>Option: Yes</p>
-              <p>Address: <code>12341234</code></p>
-              <p>ol command: <code>ol txs something something 12341234</code></p>
-            </li>
-            <li>
-              <p>Option: No</p>
-              <p>Address: <code>456456</code></p>
-              <p>ol command: <code>ol txs something something 456456</code></p>
+            <li v-for="o in options">
+              <p>Option: {{ o.option }}</p>
+              <p>Address: <code>{{ o.address }}</code></p>
+              <p>ol command: <code>ol txs something something {{ o.address }}</code></p>
             </li>
           </ul>
         </div>
