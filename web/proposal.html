@@ -12,7 +12,7 @@
 <body>
 <div id="app">
   <bn-nav></bn-nav>
-  <bn-hero :title="title" :subtitle="description"></bn-hero>
+  <bn-hero :title="title" :subtitle="subtitle"></bn-hero>
 
   <!-- Content section -->
   <div id="content" class="section">
@@ -23,12 +23,12 @@
         </div>
         <div class="column is-6">
           <h3 class="is-size-3">Description</h3>
-          {{ description }}
+          <span style="white-space: pre-line">{{ description }}</span>
 
-          <h3 v-if="options.length" class="is-size-3">Options</h3>
+          <h3 v-if="options.length" class="is-size-3 mt-2">Options</h3>
           <ul>
-            <li v-for="o in options">
-              <p>Option: {{ o.option }}</p>
+            <li v-for="o in options" class="mb-2">
+              <p>Option: <b>{{ o.option }}</b></p>
               <p>Address: <code>{{ o.address }}</code></p>
               <p>ol command: <code>ol txs something something {{ o.address }}</code></p>
             </li>

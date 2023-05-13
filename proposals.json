@@ -3,7 +3,8 @@
     "id": 1,
     "title": "Example Proposal one",
     "address": "145EF368FC67DB6B85EB1C7D07F0D21F",
-    "description": "This is an example proposal. 1",
+    "subtitle": "This is an example proposal. 1",
+    "description": "This is an onchain voting test.\nSend a transaction to any of the option addresses.",
     "options": [
       {
         "option": "Yes",

@@ -17,6 +17,7 @@ createApp({
     return {
       loading: true,
       title: 'Proposal',
+      subtitle: 'Loading...',
       description: 'Loading...',
       options: [],
     }
@@ -27,6 +28,7 @@ createApp({
     const proposalID = location.pathname.split("/proposal/")[1]
     const { data } = await axios.get(`/api/proposals/${proposalID}`)
     this.title = data.title
+    this.subtitle = data.subtitle
     this.description = data.description
     this.options = data.options
     this.loading = false

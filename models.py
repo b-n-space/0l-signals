@@ -46,6 +46,7 @@ class VotesSummary(BaseModel):
 class Proposal(BaseModel):
     id: int
     title: str
+    subtitle: str
     address: str
     description: str
     options: List[VoteOption]
