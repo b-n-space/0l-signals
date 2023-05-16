@@ -18,13 +18,13 @@ async def proposals():
 
 
 @app.get("/proposal/{proposal_id}")
-async def proposal(proposal_id: int):
+async def proposal(proposal_id: str):
     # Todo (Nour): Pass id to the page so it fetches the correct proposal
     return FileResponse("web/proposal.html")
 
 
 @app.get("/api/proposals/{proposal_id}", response_model=Proposal)
-async def get_proposal(proposal_id: int):
+async def get_proposal(proposal_id: str):
     proposal = get_proposal_info(proposal_id)
     fill_proposal_stats(proposal)
     return proposal

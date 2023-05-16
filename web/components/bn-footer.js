@@ -3,7 +3,7 @@ const template = `
   <div class="content has-text-centered">
     <p>
       <strong>0L-Signals</strong>
-      by <a href="https://github.com/bn-space/" target="_blank" rel="noreferrer">Bᴺ Space</a>
+      by <a href="https://github.com/b-n-space/" target="_blank" rel="noreferrer">Bᴺ Space</a>
       is a platform to en—gauge 0L Community
     </p>
     <p> 
